@@ -28,9 +28,9 @@ public class UIMain : UIBase
     IEnumerator Init()
     {
         DataManager.instance.Init();
-        desc.text = "접속 정보를 입력해주세요.";
+        desc.text = "게임을 초기화 중입니다.";
         yield return new WaitUntil(() => DataManager.instance.isInit);
-        desc.text = "이건 원래 무슨 글자였을까";
+        desc.text = "접속 정보를 입력해주세요.";
         UnityAction callback = () =>
         {
             button.interactable = true;
