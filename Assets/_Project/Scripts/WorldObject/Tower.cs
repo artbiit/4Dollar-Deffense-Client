@@ -41,6 +41,7 @@ public class Tower : WorldBase<TowerDataSO>
     {
         if (monster == null) return;
         if(this.towerId == 0) return;
+        if(monster.nowHp <= 0) return;
         var beam = Instantiate(ResourceManager.instance.LoadAsset<BeamObject>("BeamObject"), beamPosition).SetTimer().SetTarget(monster);
         isAttackDelay = true;
         monster.SetDamage(power);
