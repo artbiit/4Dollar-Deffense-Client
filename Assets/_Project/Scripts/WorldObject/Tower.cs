@@ -40,6 +40,7 @@ public class Tower : WorldBase<TowerDataSO>
     public void OnAttackMonster(Monster monster)
     {
         if (monster == null) return;
+        if(this.towerId == 0) return;
         var beam = Instantiate(ResourceManager.instance.LoadAsset<BeamObject>("BeamObject"), beamPosition).SetTimer().SetTarget(monster);
         isAttackDelay = true;
         monster.SetDamage(power);
