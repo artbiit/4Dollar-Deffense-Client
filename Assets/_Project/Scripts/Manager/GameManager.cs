@@ -107,11 +107,9 @@ public class GameManager : MonoSingleton<GameManager>
     {
         isGameStart = true;
         Time.timeScale = 1;
-        _homeHp1 = 100;
-        _homeHp2 = 100;
-        UIManager.Get<UIGame>().InitHpGauge(homeHp1);
-        gold = 5000;
-        topScore = 0;
+        UIManager.Get<UIGame>().InitHpGauge(playerData.Base.MaxHp, opponentData.Base.MaxHp);        
+        gold = initialGameState.InitialGold;
+        topScore = playerData.HighScore;
         score = 0;
         level = 1;
         time = 0;

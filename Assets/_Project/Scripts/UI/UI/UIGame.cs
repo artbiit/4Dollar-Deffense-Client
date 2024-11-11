@@ -73,10 +73,10 @@ public class UIGame : UIBase
         UIManager.Hide<UIGame>();
     }
 
-    public void InitHpGauge(int hp)
+    public void InitHpGauge(int hp1, int hp2)
     {
-        homeHpGauge1.Init(hp);
-        homeHpGauge2.Init(hp);
+        homeHpGauge1.Init(hp1);
+        homeHpGauge2.Init(hp2);
     }
 
     public void SetHpGauge1(int damage)
