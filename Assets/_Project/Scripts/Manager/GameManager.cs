@@ -281,6 +281,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     IEnumerator MultiGameLoop()
     {
+        var wait = new WaitForSecondsRealtime(1f);
         topScore = playerData.HighScore;
         for(int i = 0; i < 2; i++)
         {
@@ -310,7 +311,8 @@ public class GameManager : MonoSingleton<GameManager>
                 tower.towerId = gameState.Towers[j].TowerId;*/
             }
         }
-        yield return new WaitForSeconds(1);
+        yield return wait;
+        wait.waitTime = 2f;
         while (isGameStart)
         {
             /*var mon = Instantiate(ResourceManager.instance.LoadAsset<Monster>("Monster"), GameObjects.instance.startPosition.position, new Quaternion());
@@ -320,7 +322,7 @@ public class GameManager : MonoSingleton<GameManager>
             GamePacket packet = new GamePacket();
             packet.SpawnMonsterRequest = new C2SSpawnMonsterRequest();
             SocketManager.instance.Send(packet);
-            yield return new WaitForSeconds(2);
+            yield return wait;
         }
     }
 
