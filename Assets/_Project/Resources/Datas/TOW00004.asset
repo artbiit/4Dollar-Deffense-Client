@@ -21,6 +21,6 @@ MonoBehaviour:
   range: 300
   cooldown: 120
   duration: 0
-  cost: 3000
+  cost: 100
   extra: 10
   extraPerLv: 1
