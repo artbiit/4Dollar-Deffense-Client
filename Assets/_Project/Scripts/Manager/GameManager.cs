@@ -238,6 +238,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void SetTower(int towerId)
     {
+        if(towers?.Count > 0)
         towers.Last().towerId = towerId;
     }
 
