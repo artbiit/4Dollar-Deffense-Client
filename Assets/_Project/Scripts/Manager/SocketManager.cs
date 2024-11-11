@@ -62,8 +62,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
 
     public void StateSyncNotification(GamePacket gamePacket)
     {        
-        var response = gamePacket.StateSyncNotification;
-        Debug.Log(response);
+        var response = gamePacket.StateSyncNotification;        
         GameManager.instance.level = response.MonsterLevel;
         GameManager.instance.homeHp2 = response.BaseHp;
         GameManager.instance.score = response.Score;
