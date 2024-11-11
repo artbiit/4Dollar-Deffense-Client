@@ -215,8 +215,16 @@ public class GameManager : MonoSingleton<GameManager>
 
     public Vector3 CalcRandomTowerPosition()
     {
-        var rand = GetRandomTowerPositionIndex();
-        var position = roads1[rand].transform.localPosition + new Vector3(0, Util.Random(-1.5f, 1.5f));
+    //    var rand = GetRandomTowerPositionIndex();
+        Vector3 startPos;
+        Vector3 endPos;
+
+        int half = roads1.Count / 2;
+        startPos = roads1[Util.Random(0, half)].transform.localPosition;
+        endPos = roads1[Util.Random(half, roads1.Count)].transform.localPosition;
+        var position = Vector3.Lerp(startPos, endPos, Util.Random(0f, 1f));
+        position.y = Mathf.Clamp(position.y + 200f * Util.Random(-1f, 1f), 200f, 400f);
+        position.z = 0f;
         //usesTowerPositions.Add(rand);
         return position;
     }
