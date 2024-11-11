@@ -8,7 +8,7 @@ using System;
 using Ironcow.WebSocketPacket;
 using Google.Protobuf;
 using static GamePacket;
-
+using Newtonsoft.Json;
 public abstract class TCPSocketManagerBase<T> : MonoSingleton<T> where T : TCPSocketManagerBase<T>
 {
     public Dictionary<PayloadOneofCase, Action<GamePacket>> _onRecv = new Dictionary<PayloadOneofCase, Action<GamePacket>>();
@@ -37,10 +37,11 @@ public abstract class TCPSocketManagerBase<T> : MonoSingleton<T> where T : TCPSo
 
     public async void Connect()
     {
-        IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
-        if(!IPAddress.TryParse(ip, out IPAddress ipAddress))
+        var addresses = Dns.GetHostAddresses(ip);
+        
+        if (!IPAddress.TryParse(ip, out IPAddress ipAddress))
         {
-            ipAddress = ipHost.AddressList[0];
+            ipAddress = addresses[0];
         }
         IPEndPoint endPoint = new IPEndPoint(ipAddress, port);
         Debug.Log("Tcp Ip : " + ipAddress.MapToIPv4().ToString() + ", Port : " + port);
@@ -102,7 +103,12 @@ public abstract class TCPSocketManagerBase<T> : MonoSingleton<T> where T : TCPSo
         while(true)
         {
             yield return new WaitUntil(() => sendQueue.Count > 0);
-            yield return socket.SendAsync(sendQueue.Dequeue().ToByteArray(), SocketFlags.None);
+            var packet = sendQueue.Dequeue();
+#if UNITY_EDITOR
+            Debug.Log($"SEND[{packet.type}] => {JsonConvert.SerializeObject(packet.gamePacket.Payload)}");
+#endif
+            yield return socket.SendAsync(packet.ToByteArray(), SocketFlags.None);
+            
         }
     }
 
@@ -112,6 +118,9 @@ public abstract class TCPSocketManagerBase<T> : MonoSingleton<T> where T : TCPSo
         {
             yield return new WaitUntil(() => receiveQueue.Count > 0);
             var packet = receiveQueue.Dequeue();
+#if UNITY_EDITOR
+            Debug.Log($"RECV[{packet.type}] => {JsonConvert.SerializeObject(packet.gamePacket.Payload)}");
+#endif
             _onRecv[packet.type].Invoke(packet.gamePacket);
         }
     }

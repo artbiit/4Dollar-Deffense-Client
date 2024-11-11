@@ -4801,6 +4801,8 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
     return new GamePacket(this);
   }
 
+    public object Payload => payload_;
+
   /// <summary>Field number for the "registerRequest" field.</summary>
   public const int RegisterRequestFieldNumber = 1;
   /// <summary>

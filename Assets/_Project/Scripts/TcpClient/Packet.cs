@@ -6,47 +6,47 @@ using static GamePacket;
 
 namespace Ironcow.WebSocketPacket
 {
-    // ÃÖ»óÀ§ GamePacket ¸Þ½ÃÁö
-    // ÆÐÅ¶ Å¸ÀÔ »ó¼ö Á¤ÀÇ (¼­¹ö¿Í µ¿ÀÏÇØ¾ß ÇÔ)
+    // ï¿½Ö»ï¿½ï¿½ï¿½ GamePacket ï¿½Þ½ï¿½ï¿½ï¿½
+    // ï¿½ï¿½Å¶ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½ï¿½)
     public enum ePacketType
     {
         NONE = 0,
-        // È¸¿ø°¡ÀÔ ¹× ·Î±×ÀÎ
+        // È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½
         REGISTER_REQUEST = 1,
         REGISTER_RESPONSE = 2,
         LOGIN_REQUEST = 3,
         LOGIN_RESPONSE = 4,
 
-        // ¸ÅÄª
+        // ï¿½ï¿½Äª
         MATCH_REQUEST = 5,
         MATCH_START_NOTIFICATION = 6,
 
-        // »óÅÂ µ¿±âÈ­
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­
         STATE_SYNC_NOTIFICATION = 7,
 
-        // Å¸¿ö ±¸ÀÔ ¹× ¹èÄ¡
+        // Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡
         TOWER_PURCHASE_REQUEST = 8,
         TOWER_PURCHASE_RESPONSE = 9,
         ADD_ENEMY_TOWER_NOTIFICATION = 10,
 
-        // ¸ó½ºÅÍ »ý¼º
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         SPAWN_MONSTER_REQUEST = 11,
         SPAWN_MONSTER_RESPONSE = 12,
         SPAWN_ENEMY_MONSTER_NOTIFICATION = 13,
 
-        // ÀüÅõ ¾×¼Ç
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½×¼ï¿½
         TOWER_ATTACK_REQUEST = 14,
         ENEMY_TOWER_ATTACK_NOTIFICATION = 15,
         MONSTER_ATTACK_BASE_REQUEST = 16,
 
-        // ±âÁö HP ¾÷µ¥ÀÌÆ® ¹× °ÔÀÓ ¿À¹ö
+        // ï¿½ï¿½ï¿½ï¿½ HP ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         UPDATE_BASE_HP_NOTIFICATION = 17,
         GAME_OVER_NOTIFICATION = 18,
 
-        // °ÔÀÓ Á¾·á
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         GAME_END_REQUEST = 19,
 
-        // ¸ó½ºÅÍ »ç¸Á ÅëÁö
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         MONSTER_DEATH_NOTIFICATION = 20,
         ENEMY_MONSTER_DEATH_NOTIFICATION = 21,
     }
