@@ -68,20 +68,11 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         GameManager.instance.homeHp2 = response.BaseHp;
         GameManager.instance.score = response.Score;
         GameManager.instance.gold = response.UserGold;
-
-        Debug.Log("level: " + GameManager.instance.level);
-        Debug.Log("homeHp1: " + GameManager.instance.homeHp1);
-        Debug.Log("homeHp2: " + GameManager.instance.homeHp2);
-        Debug.Log("score: " + GameManager.instance.score);
-        Debug.Log("gold: " + GameManager.instance.gold);
     }
 
     public void UpdateBaseHpNotification(GamePacket gamePacket)
     {        
         var response = gamePacket.UpdateBaseHpNotification;
-        Debug.Log("response.IsOpponent: "+ response.IsOpponent);
-        Debug.Log("GameManager.instance.homeHp1: " + GameManager.instance.homeHp1);
-        Debug.Log("GameManager.instance.homeHp2: " + GameManager.instance.homeHp2);
         if (!response.IsOpponent)
             GameManager.instance.homeHp1 = response.BaseHp;
         else
